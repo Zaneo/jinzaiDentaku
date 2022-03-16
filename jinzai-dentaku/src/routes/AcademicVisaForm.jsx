@@ -1,70 +1,99 @@
-import { useState } from "react";
+import React from "react";
+import { render } from "react-dom";
 
-export default function AcademicVisaForm() {
+class AcademicVisaForm extends React.Component {
 
-    const [inputs, setInputs] = useState({});
-    const [score, setScore] = useState(0);
+    constructor(props) {
+        super(props)
+        this.state = {
+            hasPHD: false,
+            hasMA: false,
+            hasBA: false,
+            hasAdditionalDegrees: false,
+            score: 0
+        };
 
-    const handleChange = (event) => {
-        const name = event.target.name;
-        const value = event.target.value;
-        setInputs(values => ({...values, [name]: value}));
-        
-        setScore(calculateVisaPoints(inputs));
-      };
+        this.handleChanged = this.handleChanged.bind(this);
+        this.calculateVisaPoints = this.calculateVisaPoints.bind(this);
+    }
 
-    return (
-        <div>
+    handleChanged(event){
+        this.setState({
+            [event.target.name]: event.target.checked
+        }, this.calculateVisaPoints);
+    }
+
+    calculateVisaPoints() {
+        let currentScore = 0;
+        if ( this.state.hasPHD ){
+            currentScore += 30;
+        } else if ( this.state.hasMA ) {
+            currentScore += 20;
+        } else if ( this.state.hasBA ){
+            currentScore += 10;
+        }
+        if ( this.state.hasAdditionalDegrees){
+            currentScore += 5;
+        }
+        console.log(this.state);
+
+        this.setState({
+            score: currentScore
+        });
+    }
+
+    render() {
+        return (
             <div>
-                <form>
-                    <label>Academic Background:
-                        <input type="checkbox"
-                        value={inputs.hasPHD || false}
-                        name="hasPHD"
-                        onChange={handleChange}
-                        />
-                        <input type="checkbox"
-                        value={inputs.hasMA || false}
-                        name="hasMA"
-                        onChange={handleChange}
-                        />
-                        <input type="checkbox"
-                        value={inputs.hasBA || false}
-                        name="hasBA"
-                        onChange={handleChange}
-                        />
-                        <input type="checkbox"
-                        value={inputs.hasAdditionalDegrees || false}
-                        name="hasAdditionalDegrees"
-                        onChange={handleChange}
-                        />
-                    </label>
-                    <input type="submit" />
-                </form>
+                <div>
+                    <form>
+                        <label>Academic Background:
+                            <ul>
+                                <li>
+                                    <label>Doctors Degree: 
+                                    <input type="checkbox"
+                                    name="hasPHD"
+                                    checked={this.state.hasPHD}
+                                    onChange={this.handleChanged}
+                                    />
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>Masters Degree: </label>
+                                    <input type="checkbox"
+                                    name="hasMA"
+                                    checked={this.state.hasMA}
+                                    onChange={this.handleChanged}
+                                    />
+                                </li>
+                                <li>
+                                    <label>Bachelors Degree:
+                                    <input type="checkbox"
+                                    name="hasBA"
+                                    checked={this.state.hasBA}
+                                    onChange={this.handleChanged}
+                                    />
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>Additional Degrees:
+                                    <input type="checkbox"
+                                    name="hasAdditionalDegrees"
+                                    checked={this.state.hasAdditionalDegrees}
+                                    onChange={this.handleChanged}
+                                    />
+                                    </label>
+                                </li>
+                            </ul>
+                        </label>
+                    </form>
+                </div>
+                <div>
+                    <h2>{this.state.score}</h2>
+                </div>
             </div>
-            <div>
-                <h2>{score}</h2>
-            </div>
-        </div>
-        
-    )
+        )
+    }
 }
 
-const calculateVisaPoints = (inputs) => {
-    alert(inputs);
-
-    let score = 0;
-    if ( inputs.hasPHD ){
-        score += 30;
-    } else if ( inputs.hasBA ) {
-        score += 20;
-    } else if ( inputs.hasBA ){
-        score += 10;
-    } else if ( inputs.hasAdditionalDegrees){
-        score += 5;
-    }
-    
-    alert(score);
-
-    return score;
-  }
+export default AcademicVisaForm;
