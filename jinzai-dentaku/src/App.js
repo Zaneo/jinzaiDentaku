@@ -1,15 +1,13 @@
 import React, {lazy, Suspense} from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 
 const AcademicVisaForm = lazy(() => import("./AcademicVisaForm"))
 
-function App() {
+function DefaultPage() {
   return (
-    <Router>
-      <Suspense fallback = {
-        <div className="App">
+    <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
@@ -25,10 +23,19 @@ function App() {
           </a>
         </header>
       </div>
-      } />
-    <Route path="/academic" component={AcademicVisaForm} />
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Suspense fallback = {DefaultPage}>
+        <Routes>
+          <Route path="/academic" component={AcademicVisaForm} />
+        </Routes>
+      </Suspense>
     </Router>
-  )
+  );
 }
 
 export default App;
