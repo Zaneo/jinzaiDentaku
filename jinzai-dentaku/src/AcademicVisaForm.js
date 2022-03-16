@@ -1,18 +1,24 @@
 import { useState } from "react";
 import ReactDOM from 'react-dom';
 
+
+
 function AcademicVisaForm() {
 
     const [inputs, setInputs] = useState({});
+    const [score, setScore] = useState(0);
 
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
-        setInputs(values => ({...values, [name]: value}))
-      }
+        
+        setInputs(values => ({...values, [name]: value}));
+
+        setScore(calculateVisaPoints(inputs));
+      };
 
     return (
-        <form on onSubmit={calculateVisaPoints}>
+        <form>
             <label>Academic Background:
                 <input type="checkbox"
                 value={inputs.hasPHD || false}
@@ -40,22 +46,23 @@ function AcademicVisaForm() {
     )
 }
 
-const calculateVisaPoints = (event) => {
-    event.preventDefault();
+const calculateVisaPoints = (inputs) => {
     alert(inputs);
 
-    score = 0;
-    if ( input.hasPHD ){
+    let score = 0;
+    if ( inputs.hasPHD ){
         score += 30;
-    } else if ( input.hasBA ) {
+    } else if ( inputs.hasBA ) {
         score += 20;
-    } else if ( input.hasBA ){
+    } else if ( inputs.hasBA ){
         score += 10;
-    } else if ( input.hasAdditionalDegrees){
+    } else if ( inputs.hasAdditionalDegrees){
         score += 5;
     }
     
     alert(score);
+
+    return score;
   }
 
 ReactDOM.render(<AcademicVisaForm />, document.getElementById('root'));
