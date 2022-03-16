@@ -26,7 +26,6 @@ jobs:
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.2.5
-        working-directory: ./jinzai-dentaku
         with:
           branch: gh-pages
-          folder: build
+          folder: jinzai-dentaku/build
