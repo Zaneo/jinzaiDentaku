@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 
 
-function AcademicVisaForm() {
+export default function AcademicVisaForm() {
 
     const [inputs, setInputs] = useState({});
     const [score, setScore] = useState(0);
@@ -71,5 +71,3 @@ const calculateVisaPoints = (inputs) => {
 
     return score;
   }
-
-ReactDOM.render(<AcademicVisaForm />, document.getElementById('root'));
