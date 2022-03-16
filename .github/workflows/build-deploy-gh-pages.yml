@@ -19,12 +19,14 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install and Build
+        working-directory: ./jinzai-dentaku
         run:  |
           npm ci
           npm run build
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.2.5
+        working-directory: ./jinzai-dentaku
         with:
           branch: gh-pages
           folder: build
