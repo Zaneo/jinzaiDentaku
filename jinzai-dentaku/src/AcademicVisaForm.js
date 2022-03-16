@@ -11,38 +11,45 @@ function AcademicVisaForm() {
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
-        
         setInputs(values => ({...values, [name]: value}));
-
+        
         setScore(calculateVisaPoints(inputs));
       };
 
     return (
-        <form>
-            <label>Academic Background:
-                <input type="checkbox"
-                value={inputs.hasPHD || false}
-                name="hasPHD"
-                onChange={handleChange}
-                />
-                <input type="checkbox"
-                value={inputs.hasMA || false}
-                name="hasMA"
-                onChange={handleChange}
-                />
-                <input type="checkbox"
-                value={inputs.hasBA || false}
-                name="hasBA"
-                onChange={handleChange}
-                />
-                <input type="checkbox"
-                value={inputs.hasAdditionalDegrees || false}
-                name="hasAdditionalDegrees"
-                onChange={handleChange}
-                />
-            </label>
-            <input type="submit" />
-        </form>
+        <div>
+            <div>
+                <form>
+                    <label>Academic Background:
+                        <input type="checkbox"
+                        value={inputs.hasPHD || false}
+                        name="hasPHD"
+                        onChange={handleChange}
+                        />
+                        <input type="checkbox"
+                        value={inputs.hasMA || false}
+                        name="hasMA"
+                        onChange={handleChange}
+                        />
+                        <input type="checkbox"
+                        value={inputs.hasBA || false}
+                        name="hasBA"
+                        onChange={handleChange}
+                        />
+                        <input type="checkbox"
+                        value={inputs.hasAdditionalDegrees || false}
+                        name="hasAdditionalDegrees"
+                        onChange={handleChange}
+                        />
+                    </label>
+                    <input type="submit" />
+                </form>
+            </div>
+            <div>
+                <h2>{score}</h2>
+            </div>
+        </div>
+        
     )
 }
 
