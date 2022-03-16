@@ -1,25 +1,34 @@
+import React, {lazy, Suspense} from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 
+const AcademicVisaForm = lazy(() => import("AcademicVisaForm"))
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          <p1>Testing Github Pages with react and github actions</p1>
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <Suspense fallback = {
+        <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>
+            <p1>Testing Github Pages with react and github actions</p1>
+          </p>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React
+          </a>
+        </header>
+      </div>
+      } />
+    <Route path="/academic" component={AcademicVisaForm} />
+    </Router>
+  )
 }
 
 export default App;
