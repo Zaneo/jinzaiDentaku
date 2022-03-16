@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 
-const AcademicVisaForm = lazy(() => import("AcademicVisaForm"))
+const AcademicVisaForm = lazy(() => import("./AcademicVisaForm"))
 
 function App() {
   return (
