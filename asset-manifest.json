@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/jinzaiDentaku/static/css/main.073c9b0a.css",
-    "main.js": "/jinzaiDentaku/static/js/main.1d66564e.js",
+    "main.js": "/jinzaiDentaku/static/js/main.d41651f2.js",
     "static/css/116.31d6cfe0.chunk.css": "/jinzaiDentaku/static/css/116.31d6cfe0.chunk.css",
     "static/js/116.8454026a.chunk.js": "/jinzaiDentaku/static/js/116.8454026a.chunk.js",
     "static/js/787.b03062ec.chunk.js": "/jinzaiDentaku/static/js/787.b03062ec.chunk.js",
@@ -9,13 +9,13 @@
     "static/media/logo.svg": "/jinzaiDentaku/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/jinzaiDentaku/index.html",
     "main.073c9b0a.css.map": "/jinzaiDentaku/static/css/main.073c9b0a.css.map",
-    "main.1d66564e.js.map": "/jinzaiDentaku/static/js/main.1d66564e.js.map",
+    "main.d41651f2.js.map": "/jinzaiDentaku/static/js/main.d41651f2.js.map",
     "116.8454026a.chunk.js.map": "/jinzaiDentaku/static/js/116.8454026a.chunk.js.map",
     "787.b03062ec.chunk.js.map": "/jinzaiDentaku/static/js/787.b03062ec.chunk.js.map",
     "782.bcc7fc74.chunk.js.map": "/jinzaiDentaku/static/js/782.bcc7fc74.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.1d66564e.js"
+    "static/js/main.d41651f2.js"
   ]
 }
